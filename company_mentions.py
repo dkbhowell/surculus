@@ -26,19 +26,20 @@ if __name__ == '__main__':
     auth.set_access_token(access_token, access_token_secret)
     api = API(auth)
 
-    company_handle = "@TeslaMotors"
     companies = ["@TeslaMotors", "@zynga", "@SpaceX"]
     now = datetime.now()
-    today = now.date() # modify this to get past info
+    today = now.date()
+
+    num_days = 2 # modify this to get past info
 
     for company in companies:
-        for lag in range(2):
+        for lag in range(num_days):
             day = today - timedelta(days=lag)
             tomorrow = day + timedelta(days=1)
 
             print 'Collecting tweets mentioning ' + company + ' on ' + str(day)
 
-            directory = "popular_tweet_logs/" + company + "/"
+            directory = "popular_tweet_logs/" + company[1:] + "/"
             if not os.path.exists(directory):
                 os.makedirs(directory)
 

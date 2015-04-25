@@ -29,8 +29,10 @@ if __name__ == '__main__':
     now = datetime.now()
     companies = ["TeslaMotors", "Zynga", "SpaceX"]
 
+    num_days = 3
+
     for company in companies:
-        for lag in range(4):
+        for lag in range(num_days):
             midnight = now.replace(hour=00, minute=00, second=00, microsecond=00) - timedelta(days=lag) # modify this to get past info
             cutoff = midnight + timedelta(days=1)
             today = midnight.date()
