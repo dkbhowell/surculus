@@ -39,11 +39,11 @@ def get_top_dicts(dicts, num_to_return):
         rt = json_dict['retweet_count']
         fav = json_dict['favorite_count']
         flw = json_dict['user']['followers_count']
-        if rt > rtw_stats.get('max', 0):
+        if rt >= rtw_stats.get('max', 0):
             rtw_stats['max'] = rt
-        if fav > fav_stats.get('max', 0):
+        if fav >= fav_stats.get('max', 0):
             fav_stats['max'] = fav
-        if flw > flw_stats.get('max', 0):
+        if flw >= flw_stats.get('max', 0):
             flw_stats['max'] = flw
         rtw_stats['total'] = rtw_stats.get('total', 0) + rt
         fav_stats['total'] = fav_stats.get('total', 0) + fav
@@ -74,9 +74,18 @@ def get_top_dicts(dicts, num_to_return):
         rt = json_dict['retweet_count']
         fav = json_dict['favorite_count']
         flw = json_dict['user']['followers_count']
-        rtw_percent = float(rt) / rtw_stats['max']
-        fav_percent = float(fav) / fav_stats['max']
-        flw_percent = float(flw) / flw_stats['max']
+        if rtw_stats['max'] > 0:
+            rtw_percent = float(rt) / rtw_stats['max']
+        else:
+            rtw_percent = 0
+        if fav_stats['max'] > 0:
+            fav_percent = float(fav) / fav_stats['max']
+        else:
+            fav_percent = 0
+        if flw_stats['max'] > 0:
+            flw_percent = float(flw) / flw_stats['max']
+        else:
+            flw_percent = 0
         rtw_score = rtw_percent * retweet_weight
         fav_score = fav_percent * favorite_weight
         flw_score = flw_percent * flw_percent
@@ -110,40 +119,63 @@ if __name__ == '__main__':
 
 
     cwd = os.getcwd()
-    company_tweet_directory = cwd + "/" + 'company_tweet_logs'
-    mention_tweet_directory = cwd + "/" + 'popular_tweet_logs'
-    for company in os.listdir(company_tweet_directory):
-        company_path = company_tweet_directory + "/" + company
-        if os.path.isdir(company_path):
+    base_directory = cwd + '/companies/'
+    for company in os.listdir(base_directory):
+        company_dir = base_directory + company + "/"
+        if os.path.isdir(company_dir):
             company_top_tweets = {}
-            for data_file in os.listdir(company_path):
-                print company + " - " + data_file
-                company_top_tweets[data_file] = None
-                nfile = open(company_path + "/" + data_file)
-                tweet_dicts = get_dicts_from_file(nfile)
-                nfile.close()
+            for date in os.listdir(company_dir):
+                if date[0] != '.':
+                    date_dir = company_dir + date + "/"
+                    company_tweets = date_dir + 'company_tweets'
+                    company_mentions = date_dir + 'company_mentions'
+                    top_tweets = []
+                    if os.path.isfile(company_tweets):
+                        print 'company tweets is file'
+                        co_tweets_file = open(company_tweets)
+                        co_tweet_dicts = get_dicts_from_file(co_tweets_file)
+                        co_tweets_file.close()
+                        top_tweets = get_top_dicts(co_tweet_dicts, 1)
+                    if os.path.isfile(company_mentions):
+                        print 'company mentions is a file'
+                        co_mentions_file = open(company_mentions)
+                        co_mention_dicts = get_dicts_from_file(co_mentions_file)
+                        co_mentions_file.close()
+                        top_mention_dicts = []
+                        if len(top_tweets) == 1:
+                            top_mention_dicts = get_top_dicts(co_mention_dicts, 2)
+                        else:
+                            top_mention_dicts = get_top_dicts(co_mention_dicts, 3)
+                        top_tweets.extend(top_mention_dicts)
+                    top_tweets_filename = date_dir + 'top_tweets'
+                    top_tweet_file = open(top_tweets_filename, 'w')
+                    for tweet_dict in top_tweets:
+                        top_tweet_file.write(json.dumps(tweet_dict) + '\n\n')
 
-    for directory in directories:
-        path = cwd + "/" + directory
-        #print path
-        for company_dir in os.listdir(path):
-            new_path = path + "/" + company_dir
-            if os.path.isdir(new_path):
-                #print new_path
-                for data_file in os.listdir(new_path):
-                    read_filename = new_path + "/" + data_file
-                    #print read_filename
 
-    file = open(test_file)
 
-    write_dir = write_folder + "/TeslaMotors"
-    if not os.path.exists(write_dir):
-        os.makedirs(write_dir)
 
-    write_filename = write_dir + "/" + "2015-04-19"
-    write_file = open(write_filename, 'w')
+                #company_top_tweets[data_file] = None
+                #nfile = open(company_path + "/" + data_file)
+                #tweet_dicts = get_dicts_from_file(nfile)
+                #nfile.close()
+                #top_dicts = []
+                #if len(tweet_dicts) > 0:
+                #    top_dicts = get_top_dicts(tweet_dicts, 1)
+                #company_top_tweets[data_file] = top_dicts
 
-    json_dicts = get_dicts_from_file(file)
-    top_dicts = get_top_dicts(json_dicts, 3)
-    for dict in top_dicts:
-        print json.dumps(dict, indent=3)
+
+
+    #file = open(test_file)
+
+    #write_dir = write_folder + "/TeslaMotors"
+    #if not os.path.exists(write_dir):
+    #    os.makedirs(write_dir)
+
+    #write_filename = write_dir + "/" + "2015-04-19"
+    #write_file = open(write_filename, 'w')
+
+    #json_dicts = get_dicts_from_file(file)
+    #top_dicts = get_top_dicts(json_dicts, 2)
+    #for dict in top_dicts:
+    #    print json.dumps(dict, indent=3)

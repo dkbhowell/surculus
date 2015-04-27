@@ -38,11 +38,11 @@ if __name__ == '__main__':
             today = midnight.date()
             print 'Collecting tweets for ' + company + 'for ' + str(today)
 
-            directory = "company_tweet_logs/" + company + "/"
+            directory = "companies/" + company + "/" + str(today) + "/"
             if not os.path.exists(directory):
                 os.makedirs(directory)
 
-            filename = directory + str(today)
+            filename = directory + "company_tweets"
             file = open(filename, 'w')
 
             count = 1

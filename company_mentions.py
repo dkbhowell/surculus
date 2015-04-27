@@ -39,11 +39,11 @@ if __name__ == '__main__':
 
             print 'Collecting tweets mentioning ' + company + ' on ' + str(day)
 
-            directory = "popular_tweet_logs/" + company[1:] + "/"
+            directory = "companies/" + company[1:] + "/" + str(day) + "/"
             if not os.path.exists(directory):
                 os.makedirs(directory)
 
-            filename = directory + str(day)
+            filename = directory + "company_mentions"
             file = open(filename, 'w')
 
             q = company + " -filter:retweets"
