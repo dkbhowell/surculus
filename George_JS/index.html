@@ -2,27 +2,23 @@
 <html>
 <head>
 
-<!--pluging in scripts here-->
+    <!--pluging in scripts here-->
     <!--Jquery in scripts here-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-
     <!--Insert Twitter JS Lib-->
     <script sync src="https://platform.twitter.com/widgets.js"></script>
 
-
-
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             // this function runs when the DOM is ready, i.e. when the document has been parsed
             var json = {};
-            var url ={};
+            var url = {};
             p_tweet = document.getElementById("Tweet_Id");
 
-            $.getJSON("data.json", function( data ) {
+            $.getJSON("data.json", function (data) {
                 json = data;
 
-                for(i = 0; i < data.length; i++){
+                for (i = 0; i < data.length; i++) {
                     var tweet_item = data[i]
                     url = "https://twitter.com/id/status/" + encodeURIComponent(tweet_item.id_str);
                     console.log(url);
@@ -33,8 +29,6 @@
                     linebreak = document.createElement("br");
                     p_tweet.appendChild(linebreak)
 
-
-
                     var tweet = document.getElementById("tweet");
                     var id = tweet_item.id_str;
 
@@ -42,25 +36,62 @@
                     twttr.widgets.createTweet(
                             id, tweet,
                             {
-                                conversation : 'all',    // or all
-                                cards        : 'visible',  // or visible
-                                linkColor    : '#cc0000', // default is blue
-                                theme        : 'light'    // or dark
+                                conversation: 'all',    // or all
+                                cards: 'visible',  // or visible
+                                linkColor: '#cc0000', // default is blue
+                                theme: 'light'    // or dark
                             })
-                            .then (function (el) {
+                            .then(function (el) {
                         el.contentDocument.querySelector(".footer").style.display = "none";
                     });
-
-
-
-
-
                 }
-
-
-
-
             });
+
+            $.getJSON("TeslaMotorsNews.json", function (data) {
+                json = data;
+                var news_div = document.getElementById("news_div")
+
+                for (i = 0; i < data.length; i++) {
+                    var news_item = data[i];
+                    var title = news_item.Title;
+                    var url = news_item.Url
+
+                    a = document.createElement("a");
+                    a.href = url;
+                    a.innerHTML = title;
+                    news_div.appendChild(a);
+                    var linebreak = document.createElement("br");
+                    news_div.appendChild(linebreak)
+
+
+                    /*url = encodeURIComponent(tweet_item.id_str);
+                     console.log(url);
+                     a = document.createElement('a');
+                     a.href = url;
+                     a.innerHTML = url;
+                     p_tweet.appendChild(a);
+                     linebreak = document.createElement("br");
+                     p_tweet.appendChild(linebreak)
+
+                     var tweet = document.getElementById("tweet");
+                     var id = tweet_item.id_str;
+
+
+                     twttr.widgets.createTweet(
+                     id, tweet,
+                     {
+                     conversation : 'all',    // or all
+                     cards        : 'visible',  // or visible
+                     linkColor    : '#cc0000', // default is blue
+                     theme        : 'light'    // or dark
+                     })
+                     .then (function (el) {
+                     el.contentDocument.querySelector(".footer").style.display = "none";
+                     });*/
+                }
+            });
+
+
         });
 
     </script>
@@ -78,67 +109,26 @@
 
     </style>
 
-
-
-    <script>
-        /*
-
-        window.onload = (function(){
-
-            var tweet = document.getElementById("tweet");
-            var id = tweet.getAttribute("tweetID");
-
-            twttr.widgets.createTweet(
-                    id, tweet,
-                    {
-                        conversation : 'all',    // or all
-                        cards        : 'visible',  // or visible
-                        linkColor    : '#cc0000', // default is blue
-                        theme        : 'light'    // or dark
-                    })
-                    .then (function (el) {
-                el.contentDocument.querySelector(".footer").style.display = "none";
-            });
-
-        });
-
-        */
-
-    </script>
-
 </head>
 
 
-    <body>
+<body>
 
 
     <h1>Here is the return of the Json object item ID as read from data.json It is showing all tweet ID as urls </h1>
+
     <p id="Tweet_Id"></p>
 
 
+    <p>Here is the Div with harcoded values</p>
 
-
-<p>Here is the Div with harcoded values</p>
-    <div id="tweet"> </div>
-
-
-
-
-
-
-
-
-
-
+    <div id="tweet"></div>
     <a href="#" id="thislink">TEST THIS LINK</a>
 
     <a href="https://twitter.com/id/status/463440424141459456">Test Tweet</a>
 
-
-    <p>Twitter Links</p>
-
-    <p id="Tweet_Id"></p>
+    <div id="news_div"></div>
 
 
-    </body>
-    </html>
+</body>
+</html>
