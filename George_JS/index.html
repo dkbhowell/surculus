@@ -8,20 +8,33 @@
 
     <script>
 
-        var json = {};
-        var url ={};
+        document.addEventListener("DOMContentLoaded", function() {
+            // this function runs when the DOM is ready, i.e. when the document has been parsed
+            var json = {};
+            var url ={};
+            p_tweet = document.getElementById("Tweet_Id");
+
+            $.getJSON("data.json", function( data ) {
+                json = data;
+
+                url = "https://twitter.com/id/status/" + encodeURIComponent(json.id_str);
+                console.log(url);
+
+                a = document.createElement('a');
+                a.href = url; // Insted of calling setAttribute
+                a.innerHTML = url // <a>INNER_TEXT</a>
+                p_tweet.appendChild(a); // Append the link to the div
+            });
+
+
+
+        });
+
+
         //var value ={}
 
 
-        $.getJSON("data.json", function( data ) {
-            //Assign the json to your JSON variable
-            json = data;
-            //value=json;
-            //Executed after json=data
-            url = "https://twitter.com/id/status/" + encodeURIComponent(json.id_str);
-            console.log(url);
 
-        });
 
 
         //Executed before json=data
@@ -32,8 +45,8 @@
         //var url = "https://twitter.com/id/status/" + encodeURIComponent(json.id_str);
 
 
-        setTimeout(function(){console.log(json.id_str);},1000);
-        setTimeout(function(){console.log(url);},3000);
+        //setTimeout(function(){console.log(json.id_str);},1000);
+        //setTimeout(function(){console.log(url);},3000);
 
 
 
@@ -47,7 +60,8 @@
          ]*/
 
 
-       /* window.onload = function() {
+       /*
+       window.onload = function() {
 
             document.getElementById("Tweet_Id").innerHTML = json.id_str;
 
@@ -58,8 +72,8 @@
                 element.setAttribute("href", url);
             });
         };
-
         */
+
 
     </script>
 
