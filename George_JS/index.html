@@ -7,19 +7,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script>
-        //logic script instered here:
 
         var json = {};
         var url ={};
-        var value ={}
+        //var value ={}
 
 
         $.getJSON("data.json", function( data ) {
             //Assign the json to your JSON variable
             json = data;
-            value=json;
+            //value=json;
             //Executed after json=data
-            console.log(json);
+            url = "https://twitter.com/id/status/" + encodeURIComponent(json.id_str);
+            console.log(url);
 
         });
 
@@ -28,12 +28,11 @@
         //console.log(json.id_str);
         //executed 1000ms after console.log(json); and $.getJSON
 
-        var value = json.id_str;
-        var url = "https://twitter.com/id/status/" + value;
+        //var value = json.id_str;
+        //var url = "https://twitter.com/id/status/" + encodeURIComponent(json.id_str);
 
 
         setTimeout(function(){console.log(json.id_str);},1000);
-        setTimeout(function(){console.log(value);},2000);
         setTimeout(function(){console.log(url);},3000);
 
 
