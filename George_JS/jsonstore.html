@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        var json = {};
+        //test
+
+
+        //this is an async function
+        $.getJSON("data.json", function( data ) {
+
+            //Assign the json to your JSON variable
+            json = data;
+
+            //Executed after json=data
+            console.log(json);
+        });
+
+        //Executed before json=data
+        console.log(json);
+
+        //executed 1000ms after console.log(json); and $.getJSON
+        setTimeout(function(){console.log(json);},1000);
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

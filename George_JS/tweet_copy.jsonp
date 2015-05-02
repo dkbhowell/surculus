@@ -1,0 +1,172 @@
+
+
+{
+  "contributors": null,
+  "truncated": false,
+  "text": "Why @TeslaMotors, @Google, @SamsungMobileUS and @GM are battery obsessed @BillCarmody http:\/\/t.co\/yPcfCmjfGG",
+  "in_reply_to_status_id": null,
+  "id": 5.883179278977e+17,
+  "favorite_count": 9,
+  "source": "<a href=\"http:\/\/www.socialflow.com\" rel=\"nofollow\">SocialFlow<\/a>",
+  "retweeted": false,
+  "coordinates": null,
+
+
+  "entities": {
+    "symbols": [
+
+    ],
+    "user_mentions": [
+      {
+        "indices": [
+          4,
+          16
+        ],
+        "screen_name": "TeslaMotors",
+        "id": 13298072,
+        "name": "Tesla Motors",
+        "id_str": "13298072"
+      },
+      {
+        "indices": [
+          18,
+          25
+        ],
+        "screen_name": "google",
+        "id": 20536157,
+        "name": "Google",
+        "id_str": "20536157"
+      },
+      {
+        "indices": [
+          27,
+          43
+        ],
+        "screen_name": "SamsungMobileUS",
+        "id": 14117843,
+        "name": "Samsung Mobile US",
+        "id_str": "14117843"
+      },
+      {
+        "indices": [
+          48,
+          51
+        ],
+        "screen_name": "GM",
+        "id": 10850192,
+        "name": "General Motors",
+        "id_str": "10850192"
+      },
+      {
+        "indices": [
+          73,
+          85
+        ],
+        "screen_name": "BillCarmody",
+        "id": 18462961,
+        "name": "Bill Carmody",
+        "id_str": "18462961"
+      }
+    ],
+    "hashtags": [
+
+    ],
+    "urls": [
+      {
+        "url": "http:\/\/t.co\/yPcfCmjfGG",
+        "indices": [
+          86,
+          108
+        ],
+        "expanded_url": "http:\/\/bit.ly\/1D0RDEk",
+        "display_url": "bit.ly\/1D0RDEk"
+      }
+    ]
+  },
+
+
+
+
+  "in_reply_to_screen_name": null,
+  "in_reply_to_user_id": null,
+  "retweet_count": 12,
+  "id_str": "588317927897702401",
+  "favorited": false,
+
+
+
+  "user": {
+    "lang": "en",
+    "utc_offset": -14400,
+    "statuses_count": 77218,
+    "follow_request_sent": false,
+    "friends_count": 1685,
+    "profile_use_background_image": false,
+    "contributors_enabled": false,
+    "profile_link_color": "CC3366",
+    "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/539435715482750976\/mzF0N56L_normal.jpeg",
+    "time_zone": "Eastern Time (US & Canada)",
+    "notifications": false,
+    "is_translator": false,
+    "screen_name": "Inc",
+    "favourites_count": 653,
+    "profile_background_image_url_https": "https:\/\/pbs.twimg.com\/profile_background_images\/378800000172834508\/aGUoUmqB.jpeg",
+    "profile_background_color": "E8E8E8",
+    "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/16896485\/1427294012",
+    "id": 16896485,
+    "profile_background_image_url": "http:\/\/pbs.twimg.com\/profile_background_images\/378800000172834508\/aGUoUmqB.jpeg",
+    "description": "Everything you need to know to start and grow your business now.",
+    "is_translation_enabled": false,
+    "default_profile": false,
+    "profile_background_tile": false,
+    "verified": true,
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "http:\/\/t.co\/YslvkphWzr",
+            "indices": [
+              0,
+              22
+            ],
+            "expanded_url": "http:\/\/www.inc.com",
+            "display_url": "inc.com"
+          }
+        ]
+      },
+      "description": {
+        "urls": [
+
+        ]
+      }
+    },
+    "profile_location": null,
+    "url": "http:\/\/t.co\/YslvkphWzr",
+    "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/539435715482750976\/mzF0N56L_normal.jpeg",
+    "profile_sidebar_fill_color": "DAECF4",
+    "location": "New York City",
+    "name": "Inc. ",
+    "geo_enabled": false,
+    "profile_text_color": "663B12",
+    "followers_count": 1232730,
+    "profile_sidebar_border_color": "FFFFFF",
+    "id_str": "16896485",
+    "default_profile_image": false,
+    "following": true,
+    "protected": false,
+    "created_at": "Tue Oct 21 23:47:30 +0000 2008",
+    "listed_count": 24424
+  },
+  "geo": null,
+  "in_reply_to_user_id_str": null,
+  "possibly_sensitive": false,
+  "lang": "en",
+  "created_at": "Wed Apr 15 12:28:19 +0000 2015",
+  "in_reply_to_status_id_str": null,
+  "place": null,
+  "metadata": {
+    "iso_language_code": "en",
+    "result_type": "popular"
+  }
+}
+
