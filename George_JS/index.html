@@ -6,8 +6,10 @@
     <!--Jquery in scripts here-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+
     <!--Insert Twitter JS Lib-->
     <script sync src="https://platform.twitter.com/widgets.js"></script>
+
 
 
     <script>
@@ -20,15 +22,14 @@
             $.getJSON("data.json", function( data ) {
                 json = data;
 
-
                 for(i = 0; i < data.length; i++){
                     var tweet_item = data[i]
                     url = "https://twitter.com/id/status/" + encodeURIComponent(tweet_item.id_str);
                     console.log(url);
                     a = document.createElement('a');
-                    a.href = url; // Insted of calling setAttribute
-                    a.innerHTML = url // <a>INNER_TEXT</a>
-                    p_tweet.appendChild(a); // Append the link to the div
+                    a.href = url;
+                    a.innerHTML = url;
+                    p_tweet.appendChild(a);
                     linebreak = document.createElement("br");
                     p_tweet.appendChild(linebreak)
 
@@ -57,24 +58,10 @@
                 }
 
 
-                //ading in the JS for the second card element
-                //var tweet = document.getElementById("tweet");
-
-
-
-
-
-
-                //url = "https://twitter.com/id/status/" + encodeURIComponent(json[0].id_str);
-                console.log(url);
 
 
             });
-
-
-
         });
-
 
     </script>
     <!--Insert style for tweet-->
@@ -124,7 +111,7 @@
 
     <body>
 
-    <p>I am hosting the value and Key in data.json</p>
+
     <h1>Here is the return of the Json object item ID as read from data.json It is showing all tweet ID as urls </h1>
     <p id="Tweet_Id"></p>
 
@@ -134,7 +121,7 @@
 <p>Here is the Div with harcoded values</p>
     <div id="tweet"> </div>
 
-    <p>Here is the Div with valies from the data values</p>
+
 
 
 
@@ -146,6 +133,12 @@
     <a href="#" id="thislink">TEST THIS LINK</a>
 
     <a href="https://twitter.com/id/status/463440424141459456">Test Tweet</a>
+
+
+    <p>Twitter Links</p>
+
+    <p id="Tweet_Id"></p>
+
 
     </body>
     </html>

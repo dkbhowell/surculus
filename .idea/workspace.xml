@@ -2,14 +2,71 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10fbae18-d57f-4a90-83fd-b88efc60784f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/surculus.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/George_JS/data.json" afterPath="$PROJECT_DIR$/George_JS/data.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/top_tweets 2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/to_json_array.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-08/top_tweets_copy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-08/top_tweets_copy_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-07/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-08/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-09/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-10/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-11/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-12/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-13/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-14/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-15/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-16/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-17/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-18/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-19/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-20/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-21/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-22/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-23/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-24/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-25/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/SpaceX/2015-04-26/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-07/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-08/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-09/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-10/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-11/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-12/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-13/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-14/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-15/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-17/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-18/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-19/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-20/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-21/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-22/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-23/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-24/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-25/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/TeslaMotors/2015-04-26/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-07/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-08/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-09/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-10/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-11/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-12/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-13/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-14/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-15/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-17/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-18/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-19/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-20/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-21/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-22/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-23/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-24/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-25/top_tweets_fixed" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/companies/Zynga/2015-04-26/top_tweets_fixed" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/top_tweets/TeslaMotors/2015-04-19" afterPath="$PROJECT_DIR$/top_tweets" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/George_JS/index.html" afterPath="$PROJECT_DIR$/George_JS/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/George_JS/.idea/workspace.xml" afterPath="$PROJECT_DIR$/George_JS/.idea/workspace.xml" />
     </list>
     <ignored path="surculus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,8 +110,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/George_JS/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48192772">
-              <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.7891566">
+              <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -124,24 +181,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="surculus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="surculus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="surculus" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="top_tweets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TeslaMotors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -298,7 +337,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/George_JS/index.html</url>
-          <line>31</line>
+          <line>32</line>
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="1" />
@@ -348,8 +387,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/George_JS/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48192772">
-          <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.7891566">
+          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
           <folding />
         </state>
       </provider>
