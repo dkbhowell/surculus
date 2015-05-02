@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script>
-
         document.addEventListener("DOMContentLoaded", function() {
             // this function runs when the DOM is ready, i.e. when the document has been parsed
             var json = {};
@@ -16,27 +15,19 @@
 
             $.getJSON("data.json", function( data ) {
                 json = data;
-
                 for(i = 0; i < data.length; i++){
                     var tweet = data[i]
                     url = "https://twitter.com/id/status/" + encodeURIComponent(tweet.id_str);
                     console.log(url);
                     a = document.createElement('a');
-                    a.href = url; // Insted of calling setAttribute
-                    a.innerHTML = url // <a>INNER_TEXT</a>
-                    p_tweet.appendChild(a); // Append the link to the div
+                    a.href = url;
+                    a.innerHTML = url;
+                    p_tweet.appendChild(a);
                     linebreak = document.createElement("br");
                     p_tweet.appendChild(linebreak)
                 }
-
-
             });
-
-
-
         });
-
-
     </script>
 
 
@@ -47,26 +38,9 @@
 
     <body>
 
-    <p>I am hosting the value and Key in data.json</p>
-    <h1>Here is the return of the Json object item ID as read from data.json </h1>
+    <p>Twitter Links</p>
 
     <p id="Tweet_Id"></p>
-
-    <p id="Json_on"></p>
-
-
-
-    <h2>Here is the Screen Name</h2>
-    <p id="Screen_Name"></p>
-
-
-
-
-
-
-    <a href="#" id="thislink">TEST THIS LINK</a>
-
-    <a href="https://twitter.com/id/status/463440424141459456">Test Tweet</a>
 
     </body>
     </html>
