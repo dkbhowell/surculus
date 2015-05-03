@@ -18,14 +18,27 @@
             var day = "10";
             var date = year + "-" + month + "-" + day;
             var dir = root_dir + companies[0] + "/" + date;
+            tweet_div = document.getElementById("tweet");
+
+
 
             $.getJSON( dir + "/top_tweets_fixed" , function(data){
                 json = data;
+
+                var new_div = document.createElement("div");
+                new_div.id = date + "_div";
+                document.body.appendChild(new_div);
+
+                var btn = document.createElement("BUTTON");
+                var t = document.createTextNode(date);     // Create a text node
+                btn.appendChild(t);
+                new_div.appendChild(btn);
+
                 for(i = 0; i < json.length; i++){
                     var tweet_item = json[i]
                     url = "https://twitter.com/id/status/" + encodeURIComponent(tweet_item.id_str);
 
-                    var tweet = document.getElementById("tweet");
+                    var tweet = new_div//document.getElementById("tweet");
                     var id = tweet_item.id_str;
 
                     twttr.widgets.createTweet(
@@ -46,7 +59,9 @@
 
             $.getJSON("TeslaMotorsNews.json", function (data) {
                 json = data;
-                var news_div = document.getElementById("news_div")
+                var new_div = document.createElement("div");
+                new_div.id = "news" + "_div";
+                document.body.appendChild(new_div);
 
                 for (i = 0; i < data.length; i++) {
                     var news_item = data[i];
@@ -56,9 +71,9 @@
                     a = document.createElement("a");
                     a.href = url;
                     a.innerHTML = title;
-                    news_div.appendChild(a);
+                    new_div.appendChild(a);
                     var linebreak = document.createElement("br");
-                    news_div.appendChild(linebreak)
+                    new_div.appendChild(linebreak)
                 }
             });
 
