@@ -33,7 +33,7 @@
             return div;
         }
 
-        function getTeslaTweets(){
+        function getTeslaTweets(targetDiv){
             var root_dir = "companies/TeslaMotors/";
             var year = "2015";
             var month = "04";
@@ -61,13 +61,13 @@
                         date.twitIds[date.twitIds.length] = id;
                     }
                     co_dates[co_dates.length] = date;
-                    addDateToCompany(tesla, date);
+                    addTweetsToUI(targetDiv, date);
                     asyncCount--;
                 });
             }
         }
 
-        function getSpaceXTweets(){
+        function getSpaceXTweets(targetDiv){
             var root_dir = "companies/SpaceX/";
             var year = "2015";
             var month = "04";
@@ -95,13 +95,13 @@
                         date.twitIds[date.twitIds.length] = id;
                     }
                     co_dates[co_dates.length] = date;
-                    addDateToCompany(spacex, date);
+                    addTweetsToUI(targetDiv, date);
                     asyncCount--;
                 });
             }
         }
 
-        function getZyngaTweets(){
+        function getZyngaTweets(targetDiv){
             var root_dir = "companies/Zynga/";
             var year = "2015";
             var month = "04";
@@ -129,16 +129,15 @@
                         date.twitIds[date.twitIds.length] = id;
                     }
                     co_dates[co_dates.length] = date;
-                    addDateToCompany(zynga, date);
+                    addTweetsToUI(targetDiv, date);
                     asyncCount--;
                 });
             }
         }
 
-        function addDateToCompany(coObj, dateObj){
+        function addTweetsToUI(targetDiv, dateObj){
             var ids = dateObj.twitIds;
             var btn = createButton(dateObj.dateStr, dateObj.dateStr + "_btn");
-            var co_div = coObj.div;
             var div = createDiv(dateObj.dateStr + "_div");
             var tweet_div = createDiv(dateObj.dateStr + "_tweet_div");
             btn.addEventListener("click", function(){toggleVisibility(tweet_div);});
@@ -160,14 +159,14 @@
 
             tweet_div.style.display = 'none';
             div.appendChild(tweet_div);
-            co_div.appendChild(div);
+            targetDiv.appendChild(div);
         }
 
-        function getTeslaNews(){
+        function getTeslaNews(divObj){
             $.getJSON("TeslaMotorsNews.json", function (data) {
                 asyncCount++;
                 json = data;
-                var teslaDiv = tesla.div;
+                var teslaDiv = divObj;
                 var new_div = document.createElement("div");
                 new_div.id = "tesla_news_div";
                 teslaDiv.appendChild(new_div);
@@ -188,11 +187,11 @@
             });
         }
 
-        function getSpaceXNews(){
+        function getSpaceXNews(divObj){
             $.getJSON("SpaceXNews.json", function (data) {
                 asyncCount++;
                 json = data;
-                var spaceXDiv = spacex.div;
+                var spaceXDiv = divObj;
                 var new_div = document.createElement("div");
                 new_div.id = "spacex_news_div";
                 spaceXDiv.appendChild(new_div);
@@ -213,11 +212,11 @@
             });
         }
 
-        function getZyngaNews(){
+        function getZyngaNews(divObj){
             $.getJSON("ZyngaNews.json", function (data) {
                 asyncCount++;
                 json = data;
-                var zyngaDiv = zynga.div;
+                var zyngaDiv = divObj;
                 var new_div = document.createElement("div");
                 new_div.id = "tesla_news_div";
                 zyngaDiv.appendChild(new_div);
@@ -246,20 +245,14 @@
 
             asyncCount = 0;
 
-            getTeslaTweets();
-            getSpaceXTweets();
-            getZyngaTweets();
+            getTeslaTweets(tesla.div);
+            getSpaceXTweets(spacex.div);
+            getZyngaTweets(zynga.div);
 
-            getTeslaNews();
-            getSpaceXNews();
-            getZyngaNews();
+            getTeslaNews(tesla.div);
+            getSpaceXNews(spacex.div);
+            getZyngaNews(zynga.div);
 
-            while(asyncCount > 0){}
-
-            var p = document.createElement('p');
-            var t = document.createTextNode("NO MORE ASYNC TASKS!");
-            p.appendChild(t);
-            document.body.appendChild(p);
         });
 
     </script>
