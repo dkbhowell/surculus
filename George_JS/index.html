@@ -9,59 +9,168 @@
     <script sync src="https://platform.twitter.com/widgets.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // this function runs when the DOM is ready, i.e. when the document has been parsed
-            var root_dir = "companies/";
-            var companies = ["TeslaMotors"];
+
+        function toggleVisibility(element){
+            if(element.style.display == 'block'){
+                element.style.display = 'none'
+            }else{
+                element.style.display = 'block'
+            }
+        }
+
+        function createButton(text, id){
+            var btn = document.createElement("BUTTON");
+            var t = document.createTextNode(text);     // Create a text node
+            btn.appendChild(t);
+            btn.id = id;
+            btn.style.width="150px";
+            return btn;
+        }
+
+        function createDiv(id){
+            var div = document.createElement("div");
+            div.id = id;
+            return div;
+        }
+
+        function getTeslaTweets(){
+            var root_dir = "companies/TeslaMotors/";
             var year = "2015";
             var month = "04";
-            var day = "10";
-            var date = year + "-" + month + "-" + day;
-            var dir = root_dir + companies[0] + "/" + date;
-            tweet_div = document.getElementById("tweet");
+            var day = "07";
 
+            for(var j = 0; j < 19; j++){
+                day = parseInt(day) + 1;
+                var date = year + "-" + month + "-" + day;
+                var dir = root_dir + date;
 
+                $.getJSON( dir + "/top_tweets_fixed", function(data){
+                    asyncCount++;
+                    var co_dates = tesla.dates;
+                    var json = data;
 
-            $.getJSON( dir + "/top_tweets_fixed" , function(data){
-                json = data;
+                    var aJsonItem = json[0];
+                    var created = aJsonItem.created_at.substring(0, 10);
+                    var date = {dateStr:created, twitIds:[], totalRetweets:0};
 
-                var new_div = document.createElement("div");
-                new_div.id = date + "_div";
-                document.body.appendChild(new_div);
+                    for(i = 0; i < json.length; i++){
+                        var tweet_item = json[i];
+                        var id = tweet_item.id_str;
+                        var retweets = tweet_item.retweet_count
+                        date.totalRetweets += retweets;
+                        date.twitIds[date.twitIds.length] = id;
+                    }
+                    co_dates[co_dates.length] = date;
+                    addDateToCompany(tesla, date);
+                    asyncCount--;
+                });
+            }
+        }
 
-                var btn = document.createElement("BUTTON");
-                var t = document.createTextNode(date);     // Create a text node
-                btn.appendChild(t);
-                new_div.appendChild(btn);
+        function getSpaceXTweets(){
+            var root_dir = "companies/SpaceX/";
+            var year = "2015";
+            var month = "04";
+            var day = "07";
 
-                for(i = 0; i < json.length; i++){
-                    var tweet_item = json[i]
-                    url = "https://twitter.com/id/status/" + encodeURIComponent(tweet_item.id_str);
+            for(var j = 0; j < 19; j++){
+                day = parseInt(day) + 1;
+                var date = year + "-" + month + "-" + day;
+                var dir = root_dir + date;
 
-                    var tweet = new_div//document.getElementById("tweet");
-                    var id = tweet_item.id_str;
+                $.getJSON( dir + "/top_tweets_fixed", function(data){
+                    asyncCount++;
+                    var co_dates = spacex.dates;
+                    var json = data;
 
-                    twttr.widgets.createTweet(
-                            id, tweet,
-                            {
-                                conversation: 'all',    // or all
-                                cards: 'visible',  // or visible
-                                linkColor: '#cc0000', // default is blue
-                                theme: 'light'    // or dark
-                            })
-                            .then(function (el) {
-                                el.contentDocument.querySelector(".footer").style.display = "none";
-                            });
-                }
-            });
+                    var aJsonItem = json[0];
+                    var created = aJsonItem.created_at.substring(0, 10);
+                    var date = {dateStr:created, twitIds:[], totalRetweets:0};
 
+                    for(i = 0; i < json.length; i++){
+                        var tweet_item = json[i];
+                        var id = tweet_item.id_str;
+                        var retweets = tweet_item.retweet_count
+                        date.totalRetweets += retweets;
+                        date.twitIds[date.twitIds.length] = id;
+                    }
+                    co_dates[co_dates.length] = date;
+                    addDateToCompany(spacex, date);
+                    asyncCount--;
+                });
+            }
+        }
 
+        function getZyngaTweets(){
+            var root_dir = "companies/Zynga/";
+            var year = "2015";
+            var month = "04";
+            var day = "07";
 
+            for(var j = 0; j < 19; j++){
+                day = parseInt(day) + 1;
+                var date = year + "-" + month + "-" + day;
+                var dir = root_dir + date;
+
+                $.getJSON( dir + "/top_tweets_fixed", function(data){
+                    asyncCount++;
+                    var co_dates = zynga.dates;
+                    var json = data;
+
+                    var aJsonItem = json[0];
+                    var created = aJsonItem.created_at.substring(0, 10);
+                    var date = {dateStr:created, twitIds:[], totalRetweets:0};
+
+                    for(i = 0; i < json.length; i++){
+                        var tweet_item = json[i];
+                        var id = tweet_item.id_str;
+                        var retweets = tweet_item.retweet_count
+                        date.totalRetweets += retweets;
+                        date.twitIds[date.twitIds.length] = id;
+                    }
+                    co_dates[co_dates.length] = date;
+                    addDateToCompany(zynga, date);
+                    asyncCount--;
+                });
+            }
+        }
+
+        function addDateToCompany(coObj, dateObj){
+            var ids = dateObj.twitIds;
+            var btn = createButton(dateObj.dateStr, dateObj.dateStr + "_btn");
+            var co_div = coObj.div;
+            var div = createDiv(dateObj.dateStr + "_div");
+            var tweet_div = createDiv(dateObj.dateStr + "_tweet_div");
+            btn.addEventListener("click", function(){toggleVisibility(tweet_div);});
+            div.appendChild(btn);
+            for(var i = 0; i < ids.length; i++){
+                var twitterId = ids[i];
+                twttr.widgets.createTweet(
+                        twitterId, tweet_div,
+                        {
+                            conversation: 'all',    // or all
+                            cards: 'visible',  // or visible
+                            linkColor: '#cc0000', // default is blue
+                            theme: 'light'    // or dark
+                        })
+                        .then(function (el) {
+                            //el.contentDocument.querySelector(".footer").style.display = "none";
+                        });
+            }
+
+            tweet_div.style.display = 'none';
+            div.appendChild(tweet_div);
+            co_div.appendChild(div);
+        }
+
+        function getTeslaNews(){
             $.getJSON("TeslaMotorsNews.json", function (data) {
+                asyncCount++;
                 json = data;
+                var teslaDiv = tesla.div;
                 var new_div = document.createElement("div");
-                new_div.id = "news" + "_div";
-                document.body.appendChild(new_div);
+                new_div.id = "tesla_news_div";
+                teslaDiv.appendChild(new_div);
 
                 for (i = 0; i < data.length; i++) {
                     var news_item = data[i];
@@ -75,17 +184,94 @@
                     var linebreak = document.createElement("br");
                     new_div.appendChild(linebreak)
                 }
+                asyncCount--;
             });
+        }
+
+        function getSpaceXNews(){
+            $.getJSON("SpaceXNews.json", function (data) {
+                asyncCount++;
+                json = data;
+                var spaceXDiv = spacex.div;
+                var new_div = document.createElement("div");
+                new_div.id = "spacex_news_div";
+                spaceXDiv.appendChild(new_div);
+
+                for (i = 0; i < data.length; i++) {
+                    var news_item = data[i];
+                    var title = news_item.Title;
+                    var url = news_item.Url
+
+                    a = document.createElement("a");
+                    a.href = url;
+                    a.innerHTML = title;
+                    new_div.appendChild(a);
+                    var linebreak = document.createElement("br");
+                    new_div.appendChild(linebreak)
+                }
+                asyncCount--;
+            });
+        }
+
+        function getZyngaNews(){
+            $.getJSON("ZyngaNews.json", function (data) {
+                asyncCount++;
+                json = data;
+                var zyngaDiv = zynga.div;
+                var new_div = document.createElement("div");
+                new_div.id = "tesla_news_div";
+                zyngaDiv.appendChild(new_div);
+
+                for (i = 0; i < data.length; i++) {
+                    var news_item = data[i];
+                    var title = news_item.Title;
+                    var url = news_item.Url
+
+                    a = document.createElement("a");
+                    a.href = url;
+                    a.innerHTML = title;
+                    new_div.appendChild(a);
+                    var linebreak = document.createElement("br");
+                    new_div.appendChild(linebreak)
+                }
+                asyncCount--;
+            });
+        }
 
 
+        document.addEventListener("DOMContentLoaded", function () {
+            tesla = {name:"TeslaMotors", dates:[], div:document.getElementById("tesla_div")};
+            spacex = {name:"SpaceX", dates:[], div:document.getElementById("spacex_div")};
+            zynga = {name:"Zynga", dates:[], div:document.getElementById("zynga_div")};
+
+            asyncCount = 0;
+
+            getTeslaTweets();
+            getSpaceXTweets();
+            getZyngaTweets();
+
+            getTeslaNews();
+            getSpaceXNews();
+            getZyngaNews();
+
+            while(asyncCount > 0){}
+
+            var p = document.createElement('p');
+            var t = document.createTextNode("NO MORE ASYNC TASKS!");
+            p.appendChild(t);
+            document.body.appendChild(p);
         });
 
     </script>
     <!--Insert style for tweet-->
     <style>
 
-        #tweet {
-            width: 400px !important;
+        #tesla_div {
+            float:left;
+        }
+
+        #spacex_div{
+            float:left
         }
 
         #tweet iframe {
@@ -100,12 +286,15 @@
 
 <body>
 
-    <p>Tweets</p>
-    <div id="tweet"></div>
-
-    <p>News</p>
-    <div id="news_div"></div>
-
+    <div id="tesla_div">
+        <p>Tesla</p>
+    </div>
+    <div id="spacex_div">
+        <p>SpaceX</p>
+    </div>
+    <div id="zynga_div">
+        <p>Zynga</p>
+    </div>
 
 </body>
 </html>
