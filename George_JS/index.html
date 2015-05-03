@@ -11,27 +11,22 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // this function runs when the DOM is ready, i.e. when the document has been parsed
-            var json = {};
-            var url = {};
-            p_tweet = document.getElementById("Tweet_Id");
+            var root_dir = "companies/";
+            var companies = ["TeslaMotors"];
+            var year = "2015";
+            var month = "04";
+            var day = "10";
+            var date = year + "-" + month + "-" + day;
+            var dir = root_dir + companies[0] + "/" + date;
 
-            $.getJSON("data.json", function (data) {
+            $.getJSON( dir + "/top_tweets_fixed" , function(data){
                 json = data;
-
-                for (i = 0; i < data.length; i++) {
-                    var tweet_item = data[i]
+                for(i = 0; i < json.length; i++){
+                    var tweet_item = json[i]
                     url = "https://twitter.com/id/status/" + encodeURIComponent(tweet_item.id_str);
-                    console.log(url);
-                    a = document.createElement('a');
-                    a.href = url;
-                    a.innerHTML = url;
-                    p_tweet.appendChild(a);
-                    linebreak = document.createElement("br");
-                    p_tweet.appendChild(linebreak)
 
                     var tweet = document.getElementById("tweet");
                     var id = tweet_item.id_str;
-
 
                     twttr.widgets.createTweet(
                             id, tweet,
@@ -42,10 +37,12 @@
                                 theme: 'light'    // or dark
                             })
                             .then(function (el) {
-                        el.contentDocument.querySelector(".footer").style.display = "none";
-                    });
+                                el.contentDocument.querySelector(".footer").style.display = "none";
+                            });
                 }
             });
+
+
 
             $.getJSON("TeslaMotorsNews.json", function (data) {
                 json = data;
@@ -88,19 +85,10 @@
 
 <body>
 
-
-    <h1>Here is the return of the Json object item ID as read from data.json It is showing all tweet ID as urls </h1>
-
-    <p id="Tweet_Id"></p>
-
-
-    <p>Here is the Div with harcoded values</p>
-
+    <p>Tweets</p>
     <div id="tweet"></div>
-    <a href="#" id="thislink">TEST THIS LINK</a>
 
-    <a href="https://twitter.com/id/status/463440424141459456">Test Tweet</a>
-
+    <p>News</p>
     <div id="news_div"></div>
 
 
