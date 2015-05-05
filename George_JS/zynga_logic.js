@@ -117,7 +117,7 @@ function getZyngaNews(divObj){
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     zynga = {name:"Zynga", dates:[], div:document.getElementById("zynga_div")};
 
     getZyngaTweets(zynga.div);
