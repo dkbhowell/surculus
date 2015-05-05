@@ -1,10 +1,152 @@
 <!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by anonymous (http://jsbin.com/vijehidali/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
+<head>
+    <meta charset="utf-8">
+    <title>Simple chart with C3 - in 5 minutes! </title>
+
+    <!-- Here are all the javascripts and css that you need, you can download them or linked them like here -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css" rel="stylesheet" type="text/css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script sync src="https://platform.twitter.com/widgets.js"></script>
+
+    <!--adding in the scripts for reading from the json in the chart-->
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // this function runs when the DOM is ready, i.e. when the document has been parsed
+            var json = {};
+            var url = {};
+            p_tweet = document.getElementById("Tweet_Id");
+
+            $.getJSON("data.json", function (data) {
+                json = data;
+
+                for (i = 0; i < data.length; i++) {
+                    var tweet_item = data[i]
+                    url = "https://twitter.com/id/status/" + encodeURIComponent(tweet_item.id_str);
+                    console.log(url);
+                    a = document.createElement('a');
+                    a.href = url;
+                    a.innerHTML = url;
+                    p_tweet.appendChild(a);
+                    linebreak = document.createElement("br");
+                    p_tweet.appendChild(linebreak)
+
+                    var tweet = document.getElementById("tweet");
+                    var id = tweet_item.id_str;
+
+
+                    twttr.widgets.createTweet(
+                            id, tweet,
+                            {
+                                conversation: 'all',    // or all
+                                cards: 'visible',  // or visible
+                                linkColor: '#cc0000', // default is blue
+                                theme: 'light'    // or dark
+                            })
+                            .then(function (el) {
+                                el.contentDocument.querySelector(".footer").style.display = "none";
+                            });
+                }
+            });
+
+            $.getJSON("TeslaMotorsNews.json", function (data) {
+                json = data;
+                var news_div = document.getElementById("news_div")
+
+                for (i = 0; i < data.length; i++) {
+                    var news_item = data[i];
+                    var title = news_item.Title;
+                    var url = news_item.Url
+
+                    a = document.createElement("a");
+                    a.href = url;
+                    a.innerHTML = title;
+                    news_div.appendChild(a);
+                    var linebreak = document.createElement("br");
+                    news_div.appendChild(linebreak)
+
+                }
+            });
+
+
+        });
+
+    </script>
+    <!--Insert style for tweet-->
+    <style>
+
+        #tweet {
+            width: 400px !important;
+        }
+
+        #tweet iframe {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+    </style>
+
+
 </head>
 <body>
 
+
+<div id="chart"></div>
+
+
+<script>
+    var chart = c3.generate({
+        data: {
+            // iris data from R
+            columns: [
+                ['data1', 30],
+                ['data2', 120],
+            ],
+            type : 'pie',
+
+            onclick:  function (d, i){
+
+                onclick(d,i)
+                {
+                    if ((d ===d )&(i===i)) {
+                    console.log("Good day");
+                }}
+
+            },
+
+            onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+        }
+
+     });
+
+
+</script>
+
+<h1>Here is the return of the Json object item ID as read from data.json It is showing all tweet ID as urls </h1>
+
+
+<p id="Tweet_Id"></p>
+
+<p>Here is the Div with harcoded values</p>
+
+<div id="tweet"></div>
+
+
+<div id="news_div"></div>
 </body>
 </html>
