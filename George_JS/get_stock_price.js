@@ -8,11 +8,18 @@ function getPrice(ticker, div_id){
 
     $.getJSON(url, function (json)
     {
+        console.log(json.query.results.quote);
+
         var lastquote = json.query.results.quote.LastTradePriceOnly;
-        var p = document.createElement('p');
-        var t = document.createTextNode(lastquote);
-        p.appendChild(t);
-        div.appendChild(p);
+        var change = json.query.results.quote.Change_PercentChange;
+
+        var priceText = document.createTextNode(lastquote);
+        var changeText = document.createTextNode(change);
+        var space = document.createTextNode('\u00A0'+'\u00A0'+'\u00A0');
+
+        div.appendChild(priceText);
+        div.appendChild(space)
+        div.appendChild(changeText);
     });
 }
 
