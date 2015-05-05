@@ -12,14 +12,18 @@ function getPrice(ticker, div_id){
 
         var lastquote = json.query.results.quote.LastTradePriceOnly;
         var change = json.query.results.quote.Change_PercentChange;
+        var marketcap = json.query.results.quote.MarketCapitalization;;
 
-        var priceText = document.createTextNode(lastquote);
-        var changeText = document.createTextNode(change);
+        var priceText = document.createTextNode("Price (change): " + lastquote);
+        var changeText = document.createTextNode("(" + change + ")");
+        var capText = document.createTextNode("Market Cap: " + marketcap);
         var space = document.createTextNode('\u00A0'+'\u00A0'+'\u00A0');
 
         div.appendChild(priceText);
         div.appendChild(space)
         div.appendChild(changeText);
+        div.appendChild(document.createElement('br'))
+        div.appendChild(capText)
     });
 }
 
